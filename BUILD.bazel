@@ -1,0 +1,113 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+load("@rules_python//python:defs.bzl", "py_binary")
+load("//tools:linters.bzl", "lint_tests")
+load("//tools/black:defs.bzl", "black")
+load("//tools/gofmt:defs.bzl", "gofmt")
+load("//tools/isort:defs.bzl", "isort")
+load("//tools/prettier:defs.bzl", "prettier")
+
+npm_link_all_packages(name = "node_modules")
+
+black(
+    name = "black",
+)
+
+buildifier(
+    name = "buildifier",
+    exclude_patterns = [
+        "**/crates/**",
+    ],
+    lint_mode = "fix",
+    # https://github.com/bazelbuild/buildtools/blob/master/WARNINGS.md#buildifier-warnings
+    lint_warnings = [
+        "+native-android",
+        "+native-cc",
+        "+native-java",
+        "+native-proto",
+        "+native-py",
+        "+out-of-order-load",
+        "+unsorted-dict-items",
+        "-module-docstring",
+        "-function-docstring",
+        "-function-docstring-header",
+        "-function-docstring-args",
+        "-function-docstring-return",
+    ],
+)
+
+gofmt(
+    name = "gofmt",
+)
+
+isort(
+    name = "isort",
+)
+
+prettier(
+    name = "prettier",
+)
+
+alias(
+    name = "rustfmt",
+    actual = "@rules_rust//:rustfmt",
+)
+
+py_binary(
+    name = "format",
+    srcs = ["x.py"],
+    args = ["format"],
+    legacy_create_init = False,
+    main = "x.py",
+)
+
+alias(
+    name = "fmt",
+    actual = "format",
+)
+
+lint_tests(
+    exclude_patterns = [
+        "**/node_modules/**",
+        "bazel-*/**",
+        "pnpm-lock.yaml",
+    ],
+)
+
+exports_files(
+    [
+        ".eslintignore",
+        ".eslintrc.yaml",
+        ".flake8",
+        ".prettierignore",
+        ".prettierrc.yaml",
+        ".yamllint.yaml",
+        "pyproject.toml",
+    ],
+)
+
+# gazelle:prefix github.com/lopopolo/bazel-tools-demo
+gazelle(
+    name = "gazelle",
+)
+
+go_library(
+    name = "bazel-tools-demo_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/lopopolo/bazel-tools-demo",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "bazel-tools-demo",
+    embed = [":bazel-tools-demo_lib"],
+    visibility = ["//visibility:public"],
+)
+
+build_test(
+    name = "bazel-tools-demo_build_test",
+    targets = [":bazel-tools-demo"],
+)
