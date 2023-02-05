@@ -1,0 +1,47 @@
+---
+name: CI
+"on":
+  push:
+    branches:
+      - trunk
+  pull_request:
+    branches:
+      - trunk
+  schedule:
+    - cron: "0 0 * * TUE"
+concurrency:
+  group: ci-${{ github.head_ref }}
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Mount bazel cache
+        uses: actions/cache@v3
+        with:
+          # See https://bazel.build/docs/output_directories
+          path: "~/.cache/bazel"
+          key: bazel-v3-build
+
+      - name: bazel build
+        run: bazelisk --bazelrc=.aspect/bazelrc/ci.bazelrc build //...
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Mount bazel cache
+        uses: actions/cache@v3
+        with:
+          # See https://bazel.build/docs/output_directories
+          path: "~/.cache/bazel"
+          key: bazel-v3-test
+
+      - name: bazel test
+        run: bazel --bazelrc=.aspect/bazelrc/ci.bazelrc test //...
