@@ -70,7 +70,7 @@ formatting.
 
 This rule takes the location of a `pyproject.toml` config as a parameter.
 
-[`black`]: https://pycqa.github.io/isort/
+[`isort`]: https://pycqa.github.io/isort/
 
 #### `//tools/prettier`
 
@@ -87,7 +87,7 @@ configs as parameters.
 
 ### Linters
 
-### `//tools/eslint`
+#### `//tools/eslint`
 
 Lint JavaScript code with [`eslint`]. This tool packages `eslint` for Bazel and
 exposes an `eslint_check_test` which installs a Bazel test to lint code in each
@@ -98,7 +98,7 @@ configs as parameters.
 
 [`eslint`]: https://eslint.org/
 
-### `//tools/flake8`
+#### `//tools/flake8`
 
 Lint Python code with [`flake8`]. This tool packages `flake8` for Bazel and
 exposes a `flake8_check_test` rule which installs a Bazel test to lint code in
@@ -108,7 +108,7 @@ This rule takes the location of a `.flake8` config as a parameter.
 
 [`flake8`]: https://flake8.pycqa.org/en/latest/
 
-### `//tools/yamllint`
+#### `//tools/yamllint`
 
 Lint YAML code with [`yamllint`]. This tool packages `yamllint` for Bazel and
 exposes a `yamllint_check_test` rule which installs a Bazel test to lint code in
@@ -116,4 +116,4 @@ each Bazel package.
 
 This rule takes the location of a `.yamllint.yaml` config as a parameter.
 
-[`flake8`]: https://flake8.pycqa.org/en/latest/
+[`yamllint`]: https://pypi.org/project/yamllint/
