@@ -1,0 +1,22 @@
+# Import Aspect recommended settings
+import %workspace%/.aspect/bazelrc/correctness.bazelrc
+import %workspace%/.aspect/bazelrc/convenience.bazelrc
+import %workspace%/.aspect/bazelrc/performance.bazelrc
+import %workspace%/.aspect/bazelrc/debug.bazelrc
+import %workspace%/.aspect/bazelrc/javascript.bazelrc
+import %workspace%/.aspect/bazelrc/bazel6.bazelrc
+
+### YOUR PROJECT SPECIFIC SETTINGS GO HERE ###
+
+# hyperbola-static recommended settings
+import %workspace%/.aspect/bazelrc/rust.bazelrc
+
+# go1.20 support
+# https://github.com/bazelbuild/rules_go/releases/tag/v0.38.0
+--experimental_output_directory_naming_scheme=diff_against_baseline
+
+# Load any settings & overrides specific to the current user from `.aspect/bazelrc/user.bazelrc`.
+# This file should appear in `.gitignore` so that settings are not shared with team members.
+# This should be last statement in this config so the user configuration is able to overwrite flags from
+# this file. See https://bazel.build/configure/best-practices#bazelrc-file.
+try-import %workspace%/.aspect/bazelrc/user.bazelrc
