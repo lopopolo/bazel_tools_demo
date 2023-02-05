@@ -1,0 +1,14 @@
+---
+extends: default
+
+ignore: |
+  bazel-*/**/*
+  **/node_modules/**/*
+  **/target/**/*
+  **/third_party/**
+  **/vendor/**
+  pnpm-lock.yaml
+
+rules:
+  comments: disable
+  line-length: disable
