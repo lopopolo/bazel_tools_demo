@@ -7,7 +7,7 @@ lint_tests()
 go_library(
     name = "go-mod-tidy_lib",
     srcs = ["main.go"],
-    importpath = "github.com/lopopolo/bazel-tools-demo/tools/go-mod-tidy",
+    importpath = "github.com/lopopolo/bazel_tools_demo/tools/go-mod-tidy",
     visibility = ["//visibility:private"],
     deps = ["//tools/bazelutil"],
 )

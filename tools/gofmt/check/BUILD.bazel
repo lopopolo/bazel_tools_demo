@@ -7,7 +7,7 @@ lint_tests()
 go_library(
     name = "check_lib",
     srcs = ["main.go"],
-    importpath = "github.com/lopopolo/bazel-tools-demo/tools/gofmt/check",
+    importpath = "github.com/lopopolo/bazel_tools_demo/tools/gofmt/check",
     visibility = ["//visibility:private"],
 )
 

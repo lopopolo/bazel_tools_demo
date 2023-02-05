@@ -10,7 +10,7 @@ go_library(
         "main.go",
         "modules.go",
     ],
-    importpath = "github.com/lopopolo/bazel-tools-demo/tools/update-go-deps",
+    importpath = "github.com/lopopolo/bazel_tools_demo/tools/update-go-deps",
     visibility = ["//visibility:private"],
     deps = [
         "//tools/bazelutil",

@@ -10,7 +10,7 @@ go_library(
         "bazel_run.go",
         "workspace_root.go",
     ],
-    importpath = "github.com/lopopolo/bazel-tools-demo/tools/bazelutil",
+    importpath = "github.com/lopopolo/bazel_tools_demo/tools/bazelutil",
     visibility = ["//visibility:public"],
 )
 

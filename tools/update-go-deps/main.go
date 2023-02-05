@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/lopopolo/bazel-tools-demo/tools/bazelutil"
+	"github.com/lopopolo/bazel_tools_demo/tools/bazelutil"
 	"golang.org/x/mod/modfile"
 )
 

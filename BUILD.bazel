@@ -89,25 +89,25 @@ exports_files(
     ],
 )
 
-# gazelle:prefix github.com/lopopolo/bazel-tools-demo
+# gazelle:prefix github.com/lopopolo/bazel_tools_demo
 gazelle(
     name = "gazelle",
 )
 
 go_library(
-    name = "bazel-tools-demo_lib",
+    name = "bazel_tools_demo_lib",
     srcs = ["main.go"],
-    importpath = "github.com/lopopolo/bazel-tools-demo",
+    importpath = "github.com/lopopolo/bazel_tools_demo",
     visibility = ["//visibility:private"],
 )
 
 go_binary(
-    name = "bazel-tools-demo",
-    embed = [":bazel-tools-demo_lib"],
+    name = "bazel_tools_demo",
+    embed = [":bazel_tools_demo_lib"],
     visibility = ["//visibility:public"],
 )
 
 build_test(
-    name = "bazel-tools-demo_build_test",
-    targets = [":bazel-tools-demo"],
+    name = "bazel_tools_demo_build_test",
+    targets = [":bazel_tools_demo"],
 )

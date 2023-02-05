@@ -7,7 +7,7 @@ lint_tests()
 go_library(
     name = "chdir-workspace_lib",
     srcs = ["main.go"],
-    importpath = "github.com/lopopolo/bazel-tools-demo/tools/bazelutil/chdir-workspace",
+    importpath = "github.com/lopopolo/bazel_tools_demo/tools/bazelutil/chdir-workspace",
     visibility = ["//visibility:private"],
     deps = ["//tools/bazelutil"],
 )
