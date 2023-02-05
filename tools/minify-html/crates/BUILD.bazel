@@ -11,11 +11,9 @@ package(default_visibility = ["//visibility:public"])
 exports_files(
     [
         "cargo-bazel.json",
-        "defs.bzl",
         "crates.bzl",
-    ] + glob([
-        "*.bazel",
-    ]),
+        "defs.bzl",
+    ] + glob(["*.bazel"]),
 )
 
 filegroup(
@@ -38,5 +36,3 @@ alias(
     actual = "@tools_minify_html_crates__rayon-1.6.1//:rayon",
     tags = ["manual"],
 )
-
-# Binaries
