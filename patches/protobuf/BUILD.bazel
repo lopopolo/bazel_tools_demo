@@ -1,0 +1,9 @@
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+exports_files(
+    [
+        "0026-remove-sprintf.patch",
+    ],
+)
