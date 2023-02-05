@@ -1,0 +1,78 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: "gomod"
+    directory: "/tools/update-go-deps"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 15
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: "npm"
+    directory: "/tools/eslint"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 15
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: "npm"
+    directory: "/tools/prettier"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 15
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: "pip"
+    directory: "/tools/black"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: "pip"
+    directory: "/tools/flake8"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: "pip"
+    directory: "/tools/isort"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: "pip"
+    directory: "/tools/yamllint"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps

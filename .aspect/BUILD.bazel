@@ -1,0 +1,3 @@
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()

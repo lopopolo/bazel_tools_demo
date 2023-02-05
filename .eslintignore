@@ -1,0 +1,8 @@
+bazel-*/
+
+dist/
+node_modules/
+target/
+
+**/third_party/*
+**/vendor/*

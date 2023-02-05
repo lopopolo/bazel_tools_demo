@@ -1,0 +1,29 @@
+{
+  "name": "@lopopolo/bazel_tools_demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demo workspace for writing Bazel rules and tools",
+  "keywords": [
+    "bazel",
+    "monorepo",
+    "polyglot",
+    "tools"
+  ],
+  "homepage": "https://github.com/lopopolo/bazel_tools_demo",
+  "bugs": "https://github.com/lopopolo/bazel_tools_demo/issues",
+  "license": "MIT",
+  "author": "Ryan Lopopolo <rjl@hyperbo.la> (https://hyperbo.la/)",
+  "contributors": [
+    "Ryan Lopopolo <rjl@hyperbo.la> (https://hyperbo.la/)"
+  ],
+  "repository": "github:lopopolo/bazel_tools_demo",
+  "dependencies": {
+    "commander": "^10.0.0"
+  },
+  "scripts": {
+    "build": "bazel build //...",
+    "format": "bazel run //:format",
+    "fmt": "bazel run //:fmt",
+    "test": "bazel test //..."
+  }
+}

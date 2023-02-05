@@ -1,0 +1,24 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+go_library(
+    name = "go-mod-tidy_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/lopopolo/bazel_tools_demo/tools/go-mod-tidy",
+    visibility = ["//visibility:private"],
+    deps = ["//tools/bazelutil"],
+)
+
+go_binary(
+    name = "go-mod-tidy",
+    embed = [":go-mod-tidy_lib"],
+    visibility = ["//visibility:public"],
+)
+
+build_test(
+    name = "update-go-deps_build_test",
+    targets = [":go-mod-tidy"],
+)

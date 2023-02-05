@@ -1,0 +1,12 @@
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+exports_files(
+    [
+        "eslintrc.json",
+        "package.json",
+        "package-lock.json",
+    ],
+    visibility = ["//visibility:public"],
+)

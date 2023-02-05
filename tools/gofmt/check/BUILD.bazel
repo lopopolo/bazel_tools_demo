@@ -1,0 +1,23 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+go_library(
+    name = "check_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/lopopolo/bazel_tools_demo/tools/gofmt/check",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "check",
+    embed = [":check_lib"],
+    visibility = ["//visibility:public"],
+)
+
+build_test(
+    name = "check_build_test",
+    targets = [":check"],
+)
