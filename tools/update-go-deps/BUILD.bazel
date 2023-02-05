@@ -1,0 +1,31 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+go_library(
+    name = "update-go-deps_lib",
+    srcs = [
+        "main.go",
+        "modules.go",
+    ],
+    importpath = "github.com/lopopolo/bazel-tools-demo/tools/update-go-deps",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//tools/bazelutil",
+        "@org_golang_x_mod//modfile",
+        "@org_golang_x_mod//semver",
+    ],
+)
+
+go_binary(
+    name = "update-go-deps",
+    embed = [":update-go-deps_lib"],
+    visibility = ["//visibility:public"],
+)
+
+build_test(
+    name = "update-go-deps_build_test",
+    targets = [":update-go-deps"],
+)

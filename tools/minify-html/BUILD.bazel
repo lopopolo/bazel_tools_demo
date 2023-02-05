@@ -1,0 +1,37 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_vendor")
+load("@rules_rust//rust:defs.bzl", "rust_binary")
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+crates_vendor(
+    name = "crates_vendor",
+    cargo_lockfile = ":Cargo.Bazel.lock",
+    mode = "remote",
+    packages = {
+        "minify-html": crate.spec(
+            version = "0.10.7",
+        ),
+        "rayon": crate.spec(
+            version = "1.6.1",
+        ),
+    },
+    repository_name = "tools_minify_html_crates",
+    vendor_path = "crates",
+)
+
+rust_binary(
+    name = "minify-html",
+    srcs = glob(["**/*.rs"]),
+    edition = "2021",
+    deps = [
+        "@tools_minify_html_crates//:minify-html",
+        "@tools_minify_html_crates//:rayon",
+    ],
+)
+
+build_test(
+    name = "minify-html_build_test",
+    targets = [":minify-html"],
+)

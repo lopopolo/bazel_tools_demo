@@ -1,0 +1,24 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+go_library(
+    name = "chdir-workspace_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/lopopolo/bazel-tools-demo/tools/bazelutil/chdir-workspace",
+    visibility = ["//visibility:private"],
+    deps = ["//tools/bazelutil"],
+)
+
+go_binary(
+    name = "chdir-workspace",
+    embed = [":chdir-workspace_lib"],
+    visibility = ["//visibility:public"],
+)
+
+build_test(
+    name = "chdir-workspace-build_test",
+    targets = [":chdir-workspace"],
+)

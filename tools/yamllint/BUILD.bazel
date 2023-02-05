@@ -1,0 +1,25 @@
+load("@py_deps_tools_yamllint//:requirements.bzl", "entry_point")
+load("@rules_python//python:pip.bzl", "compile_pip_requirements")
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+exports_files(
+    [
+        "requirements.txt",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# This rule adds a convenient way to update the requirements file.
+compile_pip_requirements(
+    name = "requirements",
+    extra_args = ["--allow-unsafe"],
+    tags = ["requires-network"],
+)
+
+alias(
+    name = "entry",
+    actual = entry_point("yamllint"),
+    visibility = ["//visibility:public"],
+)

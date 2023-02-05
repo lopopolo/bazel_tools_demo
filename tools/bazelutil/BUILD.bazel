@@ -1,0 +1,20 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("//tools:linters.bzl", "lint_tests")
+
+lint_tests()
+
+go_library(
+    name = "bazelutil",
+    srcs = [
+        "bazel_run.go",
+        "workspace_root.go",
+    ],
+    importpath = "github.com/lopopolo/bazel-tools-demo/tools/bazelutil",
+    visibility = ["//visibility:public"],
+)
+
+build_test(
+    name = "bazelutil_build_test",
+    targets = [":bazelutil"],
+)
