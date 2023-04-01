@@ -50,11 +50,6 @@ pyyaml==6.0 \
     --hash=sha256:e61ceaab6f49fb8bdfaa0f92c4b57bcfbea54c09277b1b4f7ac376bfb7a7c174 \
     --hash=sha256:f84fbc98b019fef2ee9a1cb3ce93e3187a6df0b2538a651bfb890254ba9f90b5
     # via yamllint
-setuptools==67.1.0 \
-    --hash=sha256:a7687c12b444eaac951ea87a9627c4f904ac757e7abdc5aac32833234af90378 \
-    --hash=sha256:e261cdf010c11a41cb5cb5f1bf3338a7433832029f559a6a7614bd42a967c300
-    # via yamllint
-yamllint==1.29.0 \
-    --hash=sha256:5153bf9f8205aa9dc6af6217e38bd4f5baf09d9a7c6f4ae1e23f90d9c00c49c5 \
-    --hash=sha256:66a755d5fbcbb8831f1a9568676329b5bac82c37995bcc9afd048b6459f9fa48
-    # via -r tools/yamllint/requirements.in
+yamllint==1.30.0 \
+    --hash=sha256:4f58f323aedda16189a489d183ecc25c66d7a9cc0fe88f61b650fef167b13190
+    # via -r requirements.in
