@@ -18,7 +18,7 @@
   ],
   "repository": "github:lopopolo/bazel_tools_demo",
   "dependencies": {
-    "commander": "^10.0.0"
+    "commander": "^10.0.1"
   },
   "scripts": {
     "build": "bazel build //...",
